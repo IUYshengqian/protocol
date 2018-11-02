@@ -1,0 +1,30 @@
+/**
+ * 测试数据格式
+ */
+
+syntax = "proto3";                 //proto3必须在文件首页加这一句
+
+package people;                   //包名,相当于定义了python文件的名称
+
+message Person {                    //自定义类
+  string name = 1;         // 类型,变量,分配标识号
+  int32 id = 2;             //类型,变量,分配标识号
+  string email = 3;
+
+  enum PhoneType {                   // 设置枚举类型
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {                         //设置子类型
+    string number = 1;      // 类型,变量,分配标识号
+    PhoneType type = 2;     //  类型,变量,分配标识号
+  }
+
+  repeated PhoneNumber phones = 4;               // 设置可重复类型,也就是列表
+}
+
+message AddressBook {             // 自定义类
+    repeated Person people = 1;   //定义列表
+}
